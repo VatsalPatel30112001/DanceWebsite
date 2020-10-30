@@ -30,7 +30,8 @@ app.set('views', path.join(__dirname, 'views')) // Set the views directory
 // ENDPOINTS
 app.get('/', (req, res)=>{ 
     const params = { }
-    res.status(200).render('home.pug', params);
+    res.status(200).render('home.pug',
+                           params);
 })
 
 app.get('/contact', (req, res)=>{ 
@@ -42,7 +43,7 @@ app.get('/contact', (req, res)=>{
 app.post('/contact', (req, res)=>{ 
     var myData = new Contact(req.body);
     myData.save().then(()=>{
-        res.send("This item has been saved to the database")
+        res.send("This item has been save to the database")
     }).catch(()=>{
         res.status(400).send("Item was not saved to the database")
     });
